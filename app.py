@@ -221,8 +221,7 @@ for vaga in vagas_encontradas:
                         "schema": EsquemaVaga.model_json_schema()
                     },
                     "onlyMainContent": False
-                },
-                timeout=120000
+                }
             )
             
             bloco_json = getattr(resposta_firecrawl, "json", {}) or {}
