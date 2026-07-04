@@ -247,10 +247,10 @@ for vaga in vagas_encontradas:
                     diferenca = data_atual - data_publicacao
                     dias_publicada = diferenca.days
                     if dias_publicada <= 15:
-                        vaga_recente = True
+                        vga_recente = True
                 except Exception as date_parse_err:
                     print(f"⚠️ Erro ao converter a string de data '{data_encontrada}': {date_parse_err}")
-                    vga_recente = True
+                    vaga_recente = True
             else:
                 print("⚠️ Não foi encontrada uma data completa (DD-MM-YYYY) nos metadados. Passando por segurança.")
                 vaga_recente = True
@@ -287,7 +287,7 @@ for vaga in vagas_encontradas:
             Título: {titulo}
             Descrição: {descricao_vaga}
             """
-            
+
             response_gemini = client.models.generate_content(
                 model='gemini-3.5-flash',
                 contents=prompt_ia,
@@ -309,10 +309,15 @@ for vaga in vagas_encontradas:
             else:
                 print("⏭️ Vaga exige experiência. Pulando candidatura.")
                 
+            # ⏳ Pausa para respeitar o limite por minuto da cota gratuita do Gemini
+            print("⏳ Aguardando 45 segundos para respeitar o limite da API gratuita do Gemini...")
+            time.sleep(45)
+                
         except Exception as e:
             print(f"❌ Falha no processamento da vaga: {e}")
+            print("⏳ Aguardando 45 segundos antes de avançar para evitar bloqueios na API...")
+            time.sleep(45)
             
-        time.sleep(2)
     else:
         print(f"⏭️ Ignorando por título e economizando crédito para: '{titulo}'")
 
