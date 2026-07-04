@@ -1,0 +1,6 @@
+playwright==1.44.0
+psycopg2-binary==2.9.9
+requests==2.32.3
+pydantic==2.7.4
+google-genai==0.1.1
+firecrawl-py==1.0.0
