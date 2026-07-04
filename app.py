@@ -7,7 +7,7 @@ import requests
 import psycopg2 
 from datetime import datetime
 from google import genai
-from firecrawl import Firecrawl
+from firecrawl import FirecrawlApp
 from pydantic import BaseModel, Field
 from playwright.async_api import async_playwright
 
