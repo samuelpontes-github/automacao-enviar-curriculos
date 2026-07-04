@@ -213,13 +213,15 @@ for vaga in vagas_encontradas:
         
         try:
             print("🕷️ Acionando Firecrawl para extrair dados estruturados...")
-            resposta_firecrawl = firecrawl_app.scrape(
+            resposta_firecrawl = firecrawl_app.scrape_url(
                 url_original,
-                formats=[{
-                    "type": "json",
-                    "schema": EsquemaVaga.model_json_schema()
-                }],
-                only_main_content=False,
+                params={
+                    "formats": ["json"],
+                    "jsonOptions": {
+                        "schema": EsquemaVaga.model_json_schema()
+                    },
+                    "onlyMainContent": False
+                },
                 timeout=120000
             )
             
