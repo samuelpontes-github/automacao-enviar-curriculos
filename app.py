@@ -27,7 +27,7 @@ GECKO_API_KEY = os.environ.get("GECKO_API_KEY")
 
 # Inicialização das APIs puxando as variáveis de ambiente com segurança
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
-firecrawl_app = Firecrawl(api_key=os.environ.get("FIRECRAWL_API_KEY"))
+firecrawl_app = FirecrawlApp(api_key=os.environ.get("FIRECRAWL_API_KEY"))
 
 # Diretório e arquivo temporário para os Cookies
 PASTA_DO_SCRIPT = os.path.dirname(os.path.abspath(__file__))
